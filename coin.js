@@ -1,16 +1,10 @@
 /**
 
-Donations welcome:
-	BTC: 122MeuyZpYz4GSHNrF98e6dnQCXZfHJeGS
-	LTC: LY1L6M6yG26b4sRkLv4BbkmHhPn8GR5fFm
-		~ Thank you!
-
-------------
-
 MIT License (MIT)
 
 Copyright (c) 2013 http://coinwidget.com/ 
 Copyright (c) 2013 http://scotty.cc/
+Copyright (c) 2014 Daniel Bugl <daniel.bugl@touchlay.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +31,9 @@ var CoinWidgetComCounter = 0;
 
 if (typeof CoinWidgetCom != 'object')
 var CoinWidgetCom = {
-	source: 'http://coinwidget.com/widget/'
+        // Note: this is the path the css and images are loaded from. keep '' to load them from the current dir.
+                 If you want to use coinwidget.com, put 'http://coinwidget.com/widget/'.
+	source: ''
         // Note: google's chart api is way faster than coinwidget.com and it almost never goes down.
         //       If you still want to use the coinwidget.com api, put 'http://coinwidget.com/widget/qr/?address=' here.
         , qr_api: 'http://chart.apis.google.com/chart?cht=qr&chs=111x111&chld=H|0&chl='
@@ -165,7 +161,7 @@ var CoinWidgetCom = {
 					$("span[data-coinwidget-instance='"+i+"']").find('> a').click();
 			}
 		});
-		if ($addresses.length) {
+		/*if ($addresses.length) {
 			CoinWidgetCom.loader.script({
 				id: 'COINWIDGETCOM_INFO'+Math.random()
 				, source: (CoinWidgetCom.source+'lookup.php?data='+$addresses.join('|'))
@@ -186,7 +182,7 @@ var CoinWidgetCom = {
 					}
 				}
 			});
-		}
+		}*/
 	}
 	, show: function(obj) {
 		$instance = $(obj).parent().attr('data-coinwidget-instance');
