@@ -38,6 +38,9 @@ var CoinWidgetComCounter = 0;
 if (typeof CoinWidgetCom != 'object')
 var CoinWidgetCom = {
 	source: 'http://coinwidget.com/widget/'
+        // Note: google's chart api is way faster than coinwidget.com and it almost never goes down.
+        //       If you still want to use the coinwidget.com api, put 'http://coinwidget.com/widget/qr/?address=' here.
+        , qr_api: 'http://chart.apis.google.com/chart?cht=qr&chs=111x111&chld=H|0&chl='
 	, config: []
 	, go :function(config) {
 		config = CoinWidgetCom.validate(config);
@@ -229,7 +232,7 @@ var CoinWidgetCom = {
 						return;
 					}
 					$lrg.attr({
-						src: CoinWidgetCom.source +'qr/?address='+$config.wallet_address
+						src: CoinWidgetCom.qr_api + $config.wallet_address
 					}).show();
 				}).bind('mouseleave',function(){
 					$lrg = $(this).parent().find('.COINWIDGETCOM_QRCODE_LARGE');
